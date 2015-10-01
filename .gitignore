@@ -1,6 +1,9 @@
 # precompiled python
 *.pyc
 
+# pycache
+*__pycache__
+
 # Setuptools distribution folder.
 /dist/
 
