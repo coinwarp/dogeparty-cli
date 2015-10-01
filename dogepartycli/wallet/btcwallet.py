@@ -6,8 +6,8 @@ import json
 import time
 import requests
 
-from counterpartylib.lib import config
-from counterpartycli.util import wallet_api as rpc
+from dogepartylib.lib import config
+from dogepartycli.util import wallet_api as rpc
 
 def get_wallet_addresses():
     addresses = []

@@ -8,9 +8,9 @@ import json
 import time
 from decimal import Decimal as D
 
-from counterpartycli.wallet import bitcoincore, btcwallet
-from counterpartylib.lib import config, util, exceptions, script
-from counterpartycli.util import api, value_out
+from dogepartycli.wallet import bitcoincore, btcwallet
+from dogepartylib.lib import config, util, exceptions, script
+from dogepartycli.util import api, value_out
 
 from pycoin.tx import Tx, SIGHASH_ALL
 from pycoin.encoding import wif_to_tuple_of_secret_exponent_compressed, public_pair_to_hash160_sec
@@ -23,14 +23,14 @@ class LockedWalletError(WalletError):
     pass
 
 def WALLET():
-    return sys.modules['counterpartycli.wallet.{}'.format(config.WALLET_NAME)] 
+    return sys.modules['dogepartycli.wallet.{}'.format(config.WALLET_NAME)]
 
 def get_wallet_addresses():
     return WALLET().get_wallet_addresses()
 
 def get_btc_balances():
     for address, btc_balance in WALLET().get_btc_balances():
-    	yield [address, btc_balance]
+        yield [address, btc_balance]
 
 def pycoin_sign_raw_transaction(tx_hex, private_key_wif):
     for char in private_key_wif:
@@ -135,10 +135,10 @@ def asset(asset_name):
         })
     else:
         issuances = api('get_issuances', {
-            'filters': [('asset', '==', asset_name),], 
-            'status': 'valid', 
-            'order_by': 'tx_index', 
-            'order_dir': 'DESC', 
+            'filters': [('asset', '==', asset_name),],
+            'status': 'valid',
+            'order_by': 'tx_index',
+            'order_dir': 'DESC',
         })
         if not issuances:
             raise WalletError('Asset not found')

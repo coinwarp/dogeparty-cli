@@ -26,9 +26,9 @@ logger = logging.getLogger(__name__)
 
 D = decimal.Decimal
 
-from counterpartylib import server
-from counterpartylib.lib import config
-from counterpartylib.lib.util import value_input, value_output
+from dogepartylib import server
+from dogepartylib.lib import config
+from dogepartylib.lib.util import value_input, value_output
 
 rpc_sessions = {}
 

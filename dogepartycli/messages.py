@@ -4,11 +4,11 @@ import binascii
 from math import ceil
 import time
 
-from counterpartylib.lib import script, config, blocks, exceptions, api, transaction
-from counterpartylib.lib.util import make_id, BET_TYPE_NAME, BET_TYPE_ID, dhash, generate_asset_name
-from counterpartylib.lib.kickstart.utils import ib2h
-from counterpartycli import util
-from counterpartycli import wallet
+from dogepartylib.lib import script, config, blocks, exceptions, api, transaction
+from dogepartylib.lib.util import make_id, BET_TYPE_NAME, BET_TYPE_ID, dhash, generate_asset_name
+from dogepartylib.lib.kickstart.utils import ib2h
+from dogepartycli import util
+from dogepartycli import wallet
 
 import bitcoin as bitcoinlib
 

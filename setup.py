@@ -5,7 +5,7 @@ import os, sys
 import shutil
 import ctypes.util
 import configparser, platform
-from counterpartycli import APP_VERSION
+from dogepartycli import APP_VERSION
 
 class generate_configuration_files(Command):
     description = "Generate configfiles from old files or bitcoind config file"
@@ -17,11 +17,11 @@ class generate_configuration_files(Command):
         pass
 
     def run(self):
-        from counterpartycli.setup import generate_config_files
+        from dogepartycli.setup import generate_config_files
         generate_config_files()
 
 class install(_install):
-    description = "Install counterparty-cli and dependencies"
+    description = "Install dogeparty-cli and dependencies"
 
     def run(self):
         caller = sys._getframe(2)
@@ -39,21 +39,21 @@ required_packages = [
     'colorlog',
     'python-dateutil',
     'requests',
-    'counterparty-lib'
+    'dogeparty-lib'
 ]
 
 setup_options = {
-    'name': 'counterparty-cli',
+    'name': 'dogeparty-cli',
     'version': APP_VERSION,
-    'author': 'Counterparty Foundation',
-    'author_email': 'support@counterparty.io',
-    'maintainer': 'Adam Krellenstein',
-    'maintainer_email': 'adamk@counterparty.io',
-    'url': 'http://counterparty.io',
+    'author': 'Coinwarp',
+    'author_email': 'dev@coinwarp.net',
+    'maintainer': 'Coinwarp',
+    'maintainer_email': 'adev@coinwarp.net',
+    'url': 'https://coinwarp.net',
     'license': 'MIT',
-    'description': 'Counterparty Protocol Command-Line Interface',
+    'description': 'Dogeparty Protocol Reference Implementation',
     'long_description': '',
-    'keywords': 'counterparty,bitcoin',
+    'keywords': 'dogeparty, dogecoin',
     'classifiers': [
         "Development Status :: 5 - Production/Stable",
         "Environment :: Console",
@@ -68,16 +68,16 @@ setup_options = {
         "Topic :: Office/Business :: Financial",
         "Topic :: System :: Distributed Computing"
     ],
-    'download_url': 'https://github.com/CounterpartyXCP/counterparty-cli/releases/tag/v' + APP_VERSION,
-    'provides': ['counterpartycli'],
+    'download_url': 'https://github.com/coinwarp/dogeparty-lib/releases/tag/v' + APP_VERSION,
+    'provides': ['dogepartycli'],
     'packages': find_packages(),
     'zip_safe': False,
     'install_requires': required_packages,
     'setup_requires': required_packages,
     'entry_points': {
         'console_scripts': [
-            'counterparty-client = counterpartycli:client_main',
-            'counterparty-server = counterpartycli:server_main',
+            'dogeparty-client = dogepartycli:client_main',
+            'dogeparty-server = dogepartycli:server_main',
         ]
     },
     'cmdclass': {
@@ -90,11 +90,11 @@ if sys.argv[1] == 'py2exe':
     import py2exe
     from py2exe.distutils_buildexe import py2exe as _py2exe
 
-    WIN_DIST_DIR = 'counterparty-cli-win32-{}'.format(APP_VERSION)
+    WIN_DIST_DIR = 'dogeparty-cli-win32-{}'.format(APP_VERSION)
 
     class py2exe(_py2exe):
         def run(self):
-            from counterpartycli.setup import before_py2exe_build, after_py2exe_build
+            from dogepartycli.setup import before_py2exe_build, after_py2exe_build
             # prepare build
             before_py2exe_build(WIN_DIST_DIR)
             # build exe's
@@ -105,8 +105,8 @@ if sys.argv[1] == 'py2exe':
     # Update setup_options with py2exe specifics options
     setup_options.update({
         'console': [
-            'counterparty-client.py',
-            'counterparty-server.py'
+            'dogeparty-client.py',
+            'dogeparty-server.py'
         ],
         'zipfile': 'library/site-packages.zip',
         'options': {

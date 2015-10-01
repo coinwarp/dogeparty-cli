@@ -8,9 +8,9 @@ if os.path.isdir(WIN_EXE_LIB):
     sys.path.insert(0, WIN_EXE_LIB)
 
 def client_main():
-    from counterpartycli import client
+    from dogepartycli import client
     client.main()
 
 def server_main():
-    from counterpartycli import server
+    from dogepartycli import server
     server.main()

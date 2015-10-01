@@ -5,14 +5,14 @@ import sys
 import argparse
 import logging
 
-from counterpartylib.lib import log
+from dogepartylib.lib import log
 logger = logging.getLogger(__name__)
 
-from counterpartylib import server
-from counterpartylib.lib import config
-from counterpartycli.util import add_config_arguments, bootstrap
-from counterpartycli.setup import generate_config_files
-from counterpartycli import APP_VERSION
+from dogepartylib import server
+from dogepartylib.lib import config
+from dogepartycli.util import add_config_arguments, bootstrap
+from dogepartycli.setup import generate_config_files
+from dogepartycli import APP_VERSION
 
 APP_NAME = 'counterparty-server'
 
@@ -49,7 +49,7 @@ class VersionError(Exception):
     pass
 def main():
     if os.name == 'nt':
-        from counterpartylib.lib import util_windows
+        from dogepartylib.lib import util_windows
         #patch up cmd.exe's "challenged" (i.e. broken/non-existent) UTF-8 logging
         util_windows.fix_win32_unicode()
 

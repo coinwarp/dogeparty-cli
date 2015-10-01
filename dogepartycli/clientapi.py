@@ -2,11 +2,11 @@ import sys
 import logging
 from urllib.parse import quote_plus as urlencode
 
-from counterpartylib.lib import config, script
-from counterpartycli import util
-from counterpartycli import wallet
-from counterpartycli import messages
-from counterpartycli.messages import get_pubkeys
+from dogepartylib.lib import config, script
+from dogepartycli import util
+from dogepartycli import wallet
+from dogepartycli import messages
+from dogepartycli.messages import get_pubkeys
 
 logger = logging.getLogger()
 
@@ -174,7 +174,7 @@ def call(method, args, pubkey_resolver=None):
 
         :Example:
 
-        import counterpartycli.clientapi
+        import dogepartycli.clientapi
         clientapi.initialize(...)
         unsigned_hex = clientapi.call('create_send', {...}) 
         signed_hex =  clientapi.call('sign_raw_transaction', unsigned_hex)

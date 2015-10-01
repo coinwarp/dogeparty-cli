@@ -139,9 +139,9 @@ def server_to_client_config(server_config):
     return client_config
 
 def generate_config_files():
-    from counterpartycli.server import CONFIG_ARGS as SERVER_CONFIG_ARGS
-    from counterpartycli.client import CONFIG_ARGS as CLIENT_CONFIG_ARGS
-    from counterpartylib.lib import config, util
+    from dogepartycli.server import CONFIG_ARGS as SERVER_CONFIG_ARGS
+    from dogepartycli.client import CONFIG_ARGS as CLIENT_CONFIG_ARGS
+    from dogepartylib.lib import config, util
 
     configdir = appdirs.user_config_dir(appauthor=config.XCP_NAME, appname=config.APP_NAME, roaming=True)
 
@@ -169,7 +169,7 @@ def before_py2exe_build(win_dist_dir):
         shutil.rmtree(win_dist_dir)
     # py2exe don't manages entry_points
     for exe_name in ['client', 'server']:
-        shutil.copy('counterpartycli/__init__.py', 'counterparty-{}.py'.format(exe_name))
+        shutil.copy('dogepartycli/__init__.py', 'counterparty-{}.py'.format(exe_name))
         with open('counterparty-{}.py'.format(exe_name), 'a') as fp:
             fp.write('{}_main()'.format(exe_name))
     # Hack
@@ -183,8 +183,8 @@ def after_py2exe_build(win_dist_dir):
         os.remove('counterparty-{}.py'.format(exe_name))
     # py2exe copies only pyc files in site-packages.zip
     # modules with no pyc files must be copied in 'dist/library/'
-    import counterpartylib, certifi
-    additionals_modules = [counterpartylib, certifi]
+    import dogepartylib, certifi
+    additionals_modules = [dogepartylib, certifi]
     for module in additionals_modules:
         moudle_file = os.path.dirname(module.__file__)
         dest_file = os.path.join(win_dist_dir, 'library', module.__name__)
