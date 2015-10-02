@@ -24,7 +24,7 @@ CONFIG_ARGS = [
     [('--backend-name',), {'default': 'addrindex', 'help': 'the backend name to connect to'}],
     [('--backend-connect',), {'default': 'localhost', 'help': 'the hostname or IP of the backend server'}],
     [('--backend-port',), {'type': int, 'help': 'the backend port to connect to'}],
-    [('--backend-user',), {'default': 'bitcoinrpc', 'help': 'the username used to communicate with backend'}],
+    [('--backend-user',), {'default': 'dogecoinrpc', 'help': 'the username used to communicate with backend'}],
     [('--backend-password',), {'help': 'the password used to communicate with backend'}],
     [('--backend-ssl',), {'action': 'store_true', 'default': False, 'help': 'use SSL to connect to backend (default: false)'}],
     [('--backend-ssl-no-verify',), {'action': 'store_true', 'default': False, 'help': 'verify SSL certificate of backend; disallow use of self‐signed certificates (default: true)'}],
@@ -69,10 +69,10 @@ def main():
     parser_server = subparsers.add_parser('start', help='run the server')
 
     parser_reparse = subparsers.add_parser('reparse', help='reparse all transactions in the database')
-   
+
     parser_rollback = subparsers.add_parser('rollback', help='rollback database')
     parser_rollback.add_argument('block_index', type=int, help='the index of the last known good block')
-    
+
     parser_kickstart = subparsers.add_parser('kickstart', help='rapidly build database by reading from Bitcoin Core blockchain')
     parser_kickstart.add_argument('--bitcoind-dir', help='Bitcoin Core data directory')
 
@@ -81,7 +81,7 @@ def main():
     args = parser.parse_args()
 
     log.set_up(logger, verbose=args.verbose)
-    
+
     logger.info('Running v{} of {}.'.format(APP_VERSION, APP_NAME))
 
     # Help message
